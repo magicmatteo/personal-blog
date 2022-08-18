@@ -15,13 +15,12 @@ enableEmoji = true
 author = "Matthew Macdonald"
 description = "My DevOps blog"
 keywords = "blog,developer,personal,devops"
-info = ["Artful always", "Magician"]
-avatarURL = "images/avatar.jpg"
-#gravatar = "john.doe@example.com"
+info = ["DevOps Engineer", "Artful always"]
+avatarURL = "images/avatar.png"
 dateFormat = "January 2, 2006"
-since = 2019
+since = 2022
 # Git Commit in Footer, uncomment the line below to enable it
-commit = "https://github.com/luizdepra/hugo-coder/tree/"
+# commit = "https://github.com/luizdepra/hugo-coder/tree/"
 # Right To Left, shift content direction for languagues such as Arabic
 rtl = false
 # Specify light/dark colorscheme
@@ -106,22 +105,16 @@ author = "authors"
 name = "Github"
 icon = "fa fa-2x fa-github"
 weight = 1
-url = "https://github.com/johndoe/"
-
-[[params.social]]
-name = "Gitlab"
-icon = "fa fa-2x fa-gitlab"
-weight = 2
-url = "https://gitlab.com/johndoe/"
+url = "https://github.com/magicmatteo/"
 
 [[params.social]]
 name = "LinkedIn"
 icon = "fa fa-2x fa-linkedin"
 weight = 4
-url = "https://www.linkedin.com/in/johndoe/"
+url = "https://www.linkedin.com/in/magicmatteo/"
 
 [languages.en]
-languageName = ":uk:"
+languageName = ":au:"
 
 [[languages.en.menu.main]]
 name = "About"
@@ -137,8 +130,3 @@ url = "posts/"
 name = "Projects"
 weight = 3
 url = "projects/"
-
-[[languages.en.menu.main]]
-name = "Contact me"
-weight = 5
-url = "contact/"
