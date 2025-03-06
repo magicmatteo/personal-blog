@@ -13,12 +13,12 @@ enableEmoji = true
 
 [params]
 author = "Matthew Macdonald"
-description = "My DevOps blog"
+description = "My Engineering Blog"
 keywords = "blog,developer,personal,devops"
 info = ["Platform Engineer", "Artful always"]
 avatarURL = "images/avatar.png"
 dateFormat = "January 2, 2006"
-since = 2022
+since = 2025
 # Git Commit in Footer, uncomment the line below to enable it
 # commit = "https://github.com/luizdepra/hugo-coder/tree/"
 # Right To Left, shift content direction for languagues such as Arabic
