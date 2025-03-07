@@ -1,5 +1,5 @@
 +++
-author = "Matthew Macdonald"
+authors = ["Matthew Macdonald"]
 title = "First Post"
 date = "2025-03-06"
 description = "First blog post, mainly to feel it out"
