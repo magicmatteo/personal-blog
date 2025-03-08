@@ -28,15 +28,13 @@ for oodle in oodles:
     print(f'Hello {oodle}')
 ```
 
-#### Code block with Hugo's internal highlight shortcode
-{{< highlight html >}}
+#### Powershell code block
 ```powershell
 $oodles = @('Poodle', 'Groodle', 'Cavoodle', 'Spoodle')
 foreach ($oodle in $oodles){
     Write-Host "Hello $oodle"
 }
 ```
-{{< /highlight >}}
 
 #### Nested list
 

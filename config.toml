@@ -4,12 +4,7 @@ theme = "hugo-coder"
 languageCode = "en"
 defaultContentLanguage = "en"
 pagination.pagerSize = 20
-pygmentsStyle = "bw"
-pygmentsCodeFences = true
-pygmentsCodeFencesGuessSyntax = true
 enableEmoji = true
-# Enable Disqus comments
-# disqusShortname = "yourdiscussshortname"
 
 [params]
 author = "Matthew Macdonald"
