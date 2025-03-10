@@ -2,6 +2,7 @@
 draft = false
 date = 2025-03-10T19:33:44+11:00
 title = "Optimizing .NET Health Checks"
+image = "healthcheck-thumbnail.png"
 description = ""
 slug = ""
 authors = ["Matthew Macdonald"]
