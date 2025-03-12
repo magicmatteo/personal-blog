@@ -1,11 +1,11 @@
 +++ 
 draft = false
-date = 2025-03-10T19:33:44+11:00
+date = 2025-03-10
 title = "Optimizing .NET Health Checks"
-description = ""
+description = "Learn how to write health checks that form a more holistic view of application health"
 slug = ""
 authors = ["Matthew Macdonald"]
-series = ["healthchecks"]
+series = ["HealthChecks"]
 tags = [".net", "reliability", "observability"]
 images = ["/images/healthcheck-thumbnail.png"]
 +++
