@@ -38,7 +38,71 @@ The lightest our health endpoint can be, is to simply return a cached health rep
 
 Lets go with the example of synthetics. Lets say you have a synthetic set up with your observability platform. These can be configured to hit your service - and potentially your health endpoint - from multiple PoPs (points of presence) around the world at once. Depending on the number of replicas your are running, this could mean your health endpoint is called multiple times at once. Depending on the nature of your health checks, this could be a dramatic waste of IO, threads and resources. By implementing this pattern, you will never be running your health check more than you specify. You gain control of how and when it is run. The new health endpoint will be simply returning the cached health info, which is essentially free, so they can spam it til the cows come home!
 
-# Code time!
+Code time!
 
+First off, lets create a new class for our background service. .NET conveniently provides an interface called `IHostedService` that we can implement. This gives us everything we need for DI to handle the lifecycle of our health check. We'll call it `ExpensiveHealthMonitor.cs`. 
 
+```csharp
+using Microsoft.Extensions.Diagnostics.HealthChecks;
+using System.Diagnostics;
 
+namespace HealthCheck;
+
+public class ExpensiveHealthMonitor : IHealthCheck, IHostedService, IDisposable
+{
+    private Timer _timer;
+    private long _checkMs;
+    public bool Healthy { get; private set; } = true;
+    private IHttpClientFactory _httpClientFactory;
+    
+    public ExpensiveHealthMonitor(IHttpClientFactory httpClientFactory)
+    {
+        _httpClientFactory = httpClientFactory;
+    }
+
+    public Task StartAsync(CancellationToken cancellationToken)
+    {
+        _timer = new Timer(CheckDependencies, null, TimeSpan.Zero, TimeSpan.FromSeconds(30));
+        return Task.CompletedTask;
+    }
+
+    public Task StopAsync(CancellationToken cancellationToken)
+    {
+        _timer?.Change(Timeout.Infinite, 0);
+        return Task.CompletedTask;
+    }
+
+    public void Dispose()
+    {
+        _timer?.Dispose();
+    }
+
+    public Task<HealthCheckResult> CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken = new CancellationToken())
+    {
+        Console.WriteLine($"{DateTime.Now.ToLongTimeString()} - Health Endpoint called!");
+        return Task.FromResult(Healthy ? HealthCheckResult.Healthy($"ExpensiveDependency is Healthy - last check took {_checkMs}ms.") : HealthCheckResult.Unhealthy("ExpensiveDependency is Unhealthy"));
+    }
+    
+    private async void CheckDependencies(object state)
+    {
+        var watch = Stopwatch.StartNew();
+        // Heavy checks go here (async calls, etc.)
+        // We could have as many as we want here to ultimately determine health
+        Healthy = await ProbeSlowPokeApi();
+        watch.Stop();
+        _checkMs = watch.ElapsedMilliseconds;
+        Console.WriteLine($"{DateTime.Now.ToLongTimeString()} - Ran PokeApiHealthCheck in the background. Took {_checkMs} ms.");
+    }
+    
+    private async Task<bool> ProbeSlowPokeApi()
+    {
+        var httpClient = _httpClientFactory.CreateClient();
+        
+        // Simulate some delay in the request
+        await Task.Delay(700);
+        
+        var response = await httpClient.GetAsync($"https://pokeapi.co/api/v2/pokemon/slowpoke");
+        return response.IsSuccessStatusCode;
+    }
+}
+```
