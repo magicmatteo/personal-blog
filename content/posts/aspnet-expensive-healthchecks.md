@@ -1,6 +1,6 @@
 +++ 
 draft = false
-date = 2025-03-14
+date = 2025-03-13
 title = "Handling Expensive Health Checks"
 description = "Learn how to improve health checks in .NET applications by offloading expensive dependency checks to a background service."
 slug = ""
