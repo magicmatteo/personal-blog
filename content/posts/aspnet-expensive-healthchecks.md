@@ -228,7 +228,7 @@ And our health endpoint output. An impressive 20ms execution time all up, but th
 
 # Conclusion
 
-If you've made it this far - thank you for reading my second part of my HealthChecks series. We covered a nice little pattern for running our health checks asynchronously, allowing our main health endpoint to return data promptly, with no overhead. I hope it will be of use to you one day. Stay tuned for my next article, where I'll deep dive into defining pragmatic liveness and readiness probes for Kubernetes using the methods we've covered.
+If you've made it this far - thank you for reading the second part of my HealthChecks series. We covered a nice little pattern for running our health checks asynchronously, allowing our main health endpoint to return data promptly, with no overhead. I hope it will be of use to you one day. Stay tuned for my next article, where I'll deep dive into defining pragmatic liveness and readiness probes for Kubernetes using the methods we've covered.
 
 Until next time :)
 
