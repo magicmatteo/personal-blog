@@ -148,6 +148,7 @@ private async void CheckDependencies(object state)
     var watch = Stopwatch.StartNew();
     // Heavy checks go here (async calls, etc.)
     // We could have as many as we want here to ultimately determine health Healthy = await ProbeSlowPokeApi();
+    Healthy = await ProbeSlowPokeApi();
     watch.Stop();
     _checkMs = watch.ElapsedMilliseconds;
     Console.WriteLine($"{DateTime.Now.ToLongTimeString()} - Ran PokeApiHealthCheck in the background. " + 
