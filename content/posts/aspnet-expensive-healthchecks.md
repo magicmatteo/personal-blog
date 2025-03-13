@@ -42,7 +42,7 @@ Lets go with the example of synthetics. Lets say you have a synthetic set up wit
 
 # Code time!
 
-First off, let's create a new class for our background service. .NET provides the `IHostedService`` interface, which allows us to manage the lifecycle and execution of our health check within dependency injection (DI).. We'll call it `ExpensiveHealthMonitor.cs`. 
+First off, let's create a new class for our background service. .NET provides the `IHostedService` interface, which allows us to manage the lifecycle and execution of our health check within dependency injection (DI).. We'll call it `ExpensiveHealthMonitor.cs`. 
 
 ```csharp
 // ExpensiveHealthMonitor.cs
